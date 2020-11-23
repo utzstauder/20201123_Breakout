@@ -48,7 +48,7 @@ public class RacketController : MonoBehaviour
 
         } else
         {
-            input = Input.GetAxisRaw(axisName);
+            input = Input.GetAxis(axisName);
         }
     }
 

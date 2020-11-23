@@ -48,6 +48,8 @@ public class BallController : MonoBehaviour
 
     Vector2 GetInitialDirection()
     {
+        return Vector2.up;
+
         // Manuel's solution
         Vector2 newVector = new Vector2(
             x: Random.Range(-Mathf.Tan(initialMaxAngle * Mathf.PI / 180), Mathf.Tan(initialMaxAngle * Mathf.PI / 180)),
