@@ -46,7 +46,7 @@ public class BallController : MonoBehaviour
         started = false;
     }
 
-    Vector2 GetInitialDirection()
+    private Vector2 GetInitialDirection()
     {
         return Vector2.up;
 

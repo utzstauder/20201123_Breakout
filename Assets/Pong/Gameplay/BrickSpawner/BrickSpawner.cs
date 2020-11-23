@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BrickSpawner : MonoBehaviour
 {
@@ -17,21 +18,55 @@ public class BrickSpawner : MonoBehaviour
         SpawnBricks();
     }
 
+    public void OnBeforeBrickDestroyed(Brick brick)
+    {
+        Debug.Log(brick.gameObject.name + " was destroyed. " + (transform.childCount - 1) + " Bricks left.");
+
+        if (transform.childCount <= 1)
+        {
+            Debug.Log("END");
+            LoadNextLevel();
+        }
+    }
+
+    void LoadNextLevel()
+    {
+        // get current scene build index
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // get target scene build index
+        buildIndex++;
+
+        // is target scene build index out of bounds?
+        if (buildIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            buildIndex = 0;
+        }
+
+        // load target scene
+        SceneManager.LoadScene(buildIndex);
+    }
+
     void SpawnBricks()
     {
         Vector3 startPosition = transform.position - ((Vector3.right * xOffset * (columns - 1)) + (Vector3.down * yOffset * (rows - 1))) / 2f;
+
+        Brick newBrick;
 
         for (int y = 0; y < rows; y++) // rows
         {
             for (int x = 0; x < columns; x++) // columns
             {
-                //Debug.Log(x + "|" + y);
-
-                Instantiate(
+                newBrick = Instantiate(
                     original: brickPrefab,
                     position: startPosition + (Vector3.right * xOffset * x) + (Vector3.down * yOffset * y),
-                    rotation: Quaternion.identity
+                    rotation: Quaternion.identity,
+                    parent: transform
                     );
+
+                newBrick.gameObject.name = $"Brick({x}|{y})";
+
+                newBrick.SetBrickSpawner(this);
             }
         }
 
@@ -46,7 +81,8 @@ public class BrickSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.matrix = transform.localToWorldMatrix; // draws gizmos in local space from here on
+
         Gizmos.color = Color.green;
 
         Vector3 startPosition = -((Vector3.right * xOffset * (columns - 1)) + (Vector3.down * yOffset * (rows - 1))) / 2f;

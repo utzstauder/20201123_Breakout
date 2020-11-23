@@ -557,11 +557,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1383843155948331290, guid: 479bfed6207f04f449439d43f001d960, type: 3}
       propertyPath: columns
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1383843155948331290, guid: 479bfed6207f04f449439d43f001d960, type: 3}
       propertyPath: rows
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3658728992101462746, guid: 479bfed6207f04f449439d43f001d960, type: 3}
       propertyPath: m_Name
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674786972383481240, guid: 479bfed6207f04f449439d43f001d960, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3674786972383481240, guid: 479bfed6207f04f449439d43f001d960, type: 3}
       propertyPath: m_LocalPosition.z
