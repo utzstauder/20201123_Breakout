@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 1901905485670135264, guid: 569c0d7b288c54949b71796fa1cd1147, type: 3}
-  columns: 4
-  rows: 2
+  columns: 12
+  rows: 4
   xOffset: 1.25
   yOffset: 0.75

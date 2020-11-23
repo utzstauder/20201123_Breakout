@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35357c82b6bf1504689b1cfe1f7e8328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  movementSpeed: 10
   axisName: Horizontal
   aiControlled: 0
   aiMovementTarget: {fileID: 0}
