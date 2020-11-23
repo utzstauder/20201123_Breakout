@@ -69,8 +69,6 @@ public class BrickSpawner : MonoBehaviour
                 newBrick.SetBrickSpawner(this);
             }
         }
-
-
     }
 
     private void OnValidate()
@@ -79,7 +77,7 @@ public class BrickSpawner : MonoBehaviour
         rows = Mathf.Clamp(rows, 1, rows);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix; // draws gizmos in local space from here on
 

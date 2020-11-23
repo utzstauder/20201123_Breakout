@@ -122,4 +122,20 @@ public class BallController : MonoBehaviour
     {
         StopAndResetBall();
     }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+
+        Gizmos.matrix = transform.localToWorldMatrix;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(Vector3.zero, Vector3.right * rigidbody2D.velocity.x);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(Vector3.zero, Vector3.up * rigidbody2D.velocity.y);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(Vector3.zero, rigidbody2D.velocity);
+    }
 }
