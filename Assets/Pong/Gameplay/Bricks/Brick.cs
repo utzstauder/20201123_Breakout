@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        OnBrickHit();
     }
 
     private void OnDestroy()
@@ -19,5 +17,10 @@ public class Brick : MonoBehaviour
     public void SetBrickSpawner(BrickSpawner spawner)
     {
         this.spawner = spawner;
+    }
+
+    protected virtual void OnBrickHit()
+    {
+        Destroy(gameObject);
     }
 }

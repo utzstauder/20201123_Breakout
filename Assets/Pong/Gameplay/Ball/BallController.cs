@@ -18,6 +18,9 @@ public class BallController : MonoBehaviour
 
     public float collisionSpeedMultiplier = 1.1f;
 
+    private Transform playerTransform;
+    public float ballRacketOffset = 0.7f;
+
     private void Awake()
     {
         initialPosition = transform.position;
@@ -25,11 +28,28 @@ public class BallController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        } else
+        {
+            Debug.LogWarning("Could not find any Player GameObject.");
+        }
+    }
+
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && !started)
+        if (!started)
         {
-            StartBall();
+            transform.position = playerTransform.position + Vector3.up * ballRacketOffset;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                StartBall();
+            }
         }
     }
 
@@ -138,4 +158,5 @@ public class BallController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(Vector3.zero, rigidbody2D.velocity);
     }
+
 }
