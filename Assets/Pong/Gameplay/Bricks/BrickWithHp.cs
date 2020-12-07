@@ -17,6 +17,7 @@ public class BrickWithHp : Brick
         currentHp--;
         if (currentHp <= 0)
         {
+            SpawnRandomPowerup();
             Destroy(gameObject);
         }
     }

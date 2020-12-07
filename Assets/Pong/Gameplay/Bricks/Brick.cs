@@ -4,6 +4,8 @@ public class Brick : MonoBehaviour
 {
     private BrickSpawner spawner;
 
+    public Powerup[] powerups;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnBrickHit();
@@ -21,6 +23,13 @@ public class Brick : MonoBehaviour
 
     protected virtual void OnBrickHit()
     {
+        SpawnRandomPowerup();
         Destroy(gameObject);
+    }
+
+    protected virtual void SpawnRandomPowerup()
+    {
+        int randomIndex = Random.Range(0, powerups.Length);
+        Instantiate(powerups[randomIndex], transform.position, Quaternion.identity);
     }
 }

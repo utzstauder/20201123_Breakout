@@ -68,18 +68,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugPowerup
       objectReference: {fileID: 0}
-    - target: {fileID: 1323548559261587674, guid: 0210d9f1a5b073740bdbdf1d4ebfb54b, type: 3}
-      propertyPath: m_Color.b
-      value: 0.6784314
-      objectReference: {fileID: 0}
-    - target: {fileID: 1323548559261587674, guid: 0210d9f1a5b073740bdbdf1d4ebfb54b, type: 3}
-      propertyPath: m_Color.g
-      value: 0.54072577
-      objectReference: {fileID: 0}
-    - target: {fileID: 1323548559261587674, guid: 0210d9f1a5b073740bdbdf1d4ebfb54b, type: 3}
-      propertyPath: m_Color.r
-      value: 0.14901961
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1323548558762095612, guid: 0210d9f1a5b073740bdbdf1d4ebfb54b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0210d9f1a5b073740bdbdf1d4ebfb54b, type: 3}
