@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2006356463748705013}
   - component: {fileID: 7395755754370234625}
   - component: {fileID: 4854515465641801156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RespawnZone
   m_TagString: Respawn
   m_Icon: {fileID: 0}

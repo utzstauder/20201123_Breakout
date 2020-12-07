@@ -20,7 +20,7 @@ public class BrickSpawner : MonoBehaviour
 
     public void OnBeforeBrickDestroyed(Brick brick)
     {
-        Debug.Log(brick.gameObject.name + " was destroyed. " + (transform.childCount - 1) + " Bricks left.");
+        // Debug.Log(brick.gameObject.name + " was destroyed. " + (transform.childCount - 1) + " Bricks left.");
 
         if (transform.childCount <= 1)
         {

@@ -56,4 +56,13 @@ public class RacketController : MonoBehaviour
     {
         rigidbody2D.velocity = Vector2.right * input * movementSpeed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Powerup powerup = collision.gameObject.GetComponent<Powerup>();
+        if (powerup != null)
+        {
+            powerup.Activate();
+        }
+    }
 }

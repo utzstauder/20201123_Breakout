@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4431691999904811762}
   - component: {fileID: 1247607150428419602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7937126326939020323}
   - component: {fileID: 7937126326939020324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 7937126326985681151}
   - component: {fileID: 7937126326985681150}
   - component: {fileID: 524749969032741572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Racket
   m_TagString: Player
   m_Icon: {fileID: 0}

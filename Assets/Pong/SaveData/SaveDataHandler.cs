@@ -17,7 +17,6 @@ public class SaveDataHandler : MonoBehaviour
         saveData = new WindowsSaveData();
 #endif
 
-
         Debug.Log(saveData.Load());
     }
 

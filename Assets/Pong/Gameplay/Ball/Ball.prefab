@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8331940649892416168}
   - component: {fileID: 7353988575396872230}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6991963226413023711}
   - component: {fileID: 3320832413054336795}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5808881984305413529}
   - component: {fileID: 9059042679369033635}
   - component: {fileID: 6203830596977908768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,6 +190,7 @@ MonoBehaviour:
   racketDeviationScale: 3
   wallDeviationScale: 3
   collisionSpeedMultiplier: 1.1
+  ballRacketOffset: 0.7
 --- !u!50 &6203830596977908768
 Rigidbody2D:
   serializedVersion: 4
