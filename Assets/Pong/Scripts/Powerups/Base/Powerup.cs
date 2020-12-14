@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Powerup : MonoBehaviour
 {
@@ -8,6 +6,13 @@ public abstract class Powerup : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    // access modifiers: public, private, protected (, internal)
+
+    // abstract -> override MUSS
+    // virtual  -> override KANN
+
+    // (sealed)
 
     public abstract void Activate();
 }

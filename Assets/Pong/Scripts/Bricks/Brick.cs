@@ -4,7 +4,7 @@ public class Brick : MonoBehaviour
 {
     private BrickSpawner spawner;
 
-    public Powerup[] powerups;
+    public PowerupSpawnConfig powerupSpawnConfig;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -29,7 +29,16 @@ public class Brick : MonoBehaviour
 
     protected virtual void SpawnRandomPowerup()
     {
-        int randomIndex = Random.Range(0, powerups.Length);
-        Instantiate(powerups[randomIndex], transform.position, Quaternion.identity);
+        // 1) get random powerup from powerupSpawnConfig
+        Powerup newPowerup = powerupSpawnConfig.GetRandomPowerup();
+
+        // 1.5) return if no valid powerup prefab received
+        if (newPowerup == null)
+        {
+            return;
+        }
+
+        // 2) instantiate powerup prefab instance
+        Instantiate(newPowerup, transform.position, Quaternion.identity);
     }
 }
