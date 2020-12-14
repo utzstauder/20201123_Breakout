@@ -65,4 +65,13 @@ public class RacketController : MonoBehaviour
             powerup.Activate();
         }
     }
+
+    public void ScaleHorizontally(float scaleFactor)
+    {
+        Vector3 newScale = transform.localScale;
+
+        newScale.x *= scaleFactor;
+
+        transform.localScale = newScale;
+    }
 }

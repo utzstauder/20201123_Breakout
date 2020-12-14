@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PowerupSpawnConfig
   m_EditorClassIdentifier: 
   powerupPrefabs:
-  - {fileID: 743609509735266998, guid: c0fcdb5ebba1f9a479bded37c0edb698, type: 3}
-  - {fileID: 8705835333012671169, guid: b07e63fae031b2e42b9be79c86505cce, type: 3}
   - {fileID: 0}
+  - {fileID: 8705835333012671169, guid: b07e63fae031b2e42b9be79c86505cce, type: 3}
+  - {fileID: 6573728610391563798, guid: 9df96af262504f541b28a9321c1bdd95, type: 3}
+  - {fileID: 6573728610391563798, guid: 263f5074fd4e78b49a33237f6756e78c, type: 3}
