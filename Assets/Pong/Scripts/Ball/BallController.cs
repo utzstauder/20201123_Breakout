@@ -21,22 +21,38 @@ public class BallController : MonoBehaviour
     private Transform playerTransform;
     public float ballRacketOffset = 0.7f;
 
+    // static = not an instance member field
+    private static int ActiveBallsInScene = 0;
+
+
     private void Awake()
     {
         initialPosition = transform.position;
 
         rigidbody2D = GetComponent<Rigidbody2D>();
+
+        ActiveBallsInScene++;
     }
 
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        // check if other balls exist?
+        if (ActiveBallsInScene > 1)
         {
-            playerTransform = player.transform;
+            started = true;
         } else
         {
-            Debug.LogWarning("Could not find any Player GameObject.");
+            // if not:
+            started = false;
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+            } else
+            {
+                Debug.LogWarning("Could not find any Player GameObject.");
+            }
         }
     }
 
@@ -51,6 +67,11 @@ public class BallController : MonoBehaviour
                 StartBall();
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        ActiveBallsInScene--;
     }
 
     public void StartBall()
@@ -140,7 +161,13 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StopAndResetBall();
+        if (ActiveBallsInScene > 1)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            StopAndResetBall();
+        }
     }
 
     private void OnDrawGizmos()
@@ -157,6 +184,40 @@ public class BallController : MonoBehaviour
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(Vector3.zero, rigidbody2D.velocity);
+    }
+
+    public BallController CreateDuplicate()
+    {
+        if (!started) return null;
+
+        BallController newBall = Instantiate(this);
+
+        // flip x velocity of new ball
+        Vector2 newVelocity = new Vector2(
+            -rigidbody2D.velocity.x,
+            rigidbody2D.velocity.y
+            );
+
+        // random x velocity when x velocity near 0
+        if (Mathf.Approximately(newVelocity.x, 0))
+        {
+            newVelocity.x = Random.Range(0.1f, 1f) * Mathf.Sign(Random.Range(-1, 1));
+        }
+
+        newBall.SetVelocity(newVelocity.normalized * initialSpeed);
+        newBall.SetPlayerTransform(playerTransform);
+
+        return newBall;
+    }
+
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        this.playerTransform = playerTransform;
+    }
+
+    public void SetVelocity(Vector2 velocity)
+    {
+        rigidbody2D.velocity = velocity;
     }
 
 }

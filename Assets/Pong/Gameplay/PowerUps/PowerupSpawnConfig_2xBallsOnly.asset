@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee52d02732e247d4bb57d7b9f1ccd418, type: 3}
-  m_Name: PowerupSpawnConfig
+  m_Name: PowerupSpawnConfig_2xBallsOnly
   m_EditorClassIdentifier: 
   powerupPrefabs:
-  - {fileID: 743609509735266998, guid: c0fcdb5ebba1f9a479bded37c0edb698, type: 3}
   - {fileID: 8705835333012671169, guid: b07e63fae031b2e42b9be79c86505cce, type: 3}
-  - {fileID: 0}
