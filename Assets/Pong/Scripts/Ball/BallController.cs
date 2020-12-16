@@ -202,6 +202,8 @@ public class BallController : MonoBehaviour
         if (Mathf.Approximately(newVelocity.x, 0))
         {
             newVelocity.x = Random.Range(0.1f, 1f) * Mathf.Sign(Random.Range(-1, 1));
+            
+            // TODO: also apply new x velocity to this ball
         }
 
         newBall.SetVelocity(newVelocity.normalized * initialSpeed);

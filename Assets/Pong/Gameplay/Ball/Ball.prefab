@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72a37342622caf4fbdeef5372b372ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 5
+  initialSpeed: 7
   initialMaxAngle: 45
   racketDeviationScale: 3
   wallDeviationScale: 3
