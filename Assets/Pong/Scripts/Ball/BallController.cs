@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour
     private bool started = false;
 
     public float initialSpeed = 5f;
+    public float maxSpeed = 20f;
     [Range(0, 90f)]
     public float initialMaxAngle = 45f;
 
@@ -23,6 +24,7 @@ public class BallController : MonoBehaviour
 
     // static = not an instance member field
     private static int ActiveBallsInScene = 0;
+    private static int BallsMarkedForDeletion = 0;
 
 
     private void Awake()
@@ -58,6 +60,8 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
+        BallsMarkedForDeletion = 0;
+
         if (!started)
         {
             transform.position = playerTransform.position + Vector3.up * ballRacketOffset;
@@ -123,7 +127,7 @@ public class BallController : MonoBehaviour
             newVelocity *= (rigidbody2D.velocity.magnitude * collisionSpeedMultiplier);
 
             // set new velocity
-            rigidbody2D.velocity = newVelocity;
+            SetVelocity(newVelocity);
         }
         else
         {
@@ -154,16 +158,18 @@ public class BallController : MonoBehaviour
                 newVelocity *= rigidbody2D.velocity.magnitude;
 
                 // set new velocity
-                rigidbody2D.velocity = newVelocity;
+                SetVelocity(newVelocity);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ActiveBallsInScene > 1)
+        if (ActiveBallsInScene > 1 &&
+            BallsMarkedForDeletion < ActiveBallsInScene - 1)
         {
             Destroy(gameObject);
+            BallsMarkedForDeletion++;
         } else
         {
             StopAndResetBall();
@@ -194,16 +200,14 @@ public class BallController : MonoBehaviour
 
         // flip x velocity of new ball
         Vector2 newVelocity = new Vector2(
-            -rigidbody2D.velocity.x,
-            rigidbody2D.velocity.y
+                -rigidbody2D.velocity.x,
+                rigidbody2D.velocity.y
             );
 
         // random x velocity when x velocity near 0
         if (Mathf.Approximately(newVelocity.x, 0))
         {
             newVelocity.x = Random.Range(0.1f, 1f) * Mathf.Sign(Random.Range(-1, 1));
-            
-            // TODO: also apply new x velocity to this ball
         }
 
         newBall.SetVelocity(newVelocity.normalized * initialSpeed);
@@ -219,6 +223,11 @@ public class BallController : MonoBehaviour
 
     public void SetVelocity(Vector2 velocity)
     {
+        if (velocity.magnitude > maxSpeed)
+        {
+            velocity = velocity.normalized * maxSpeed;
+        }
+
         rigidbody2D.velocity = velocity;
     }
 
