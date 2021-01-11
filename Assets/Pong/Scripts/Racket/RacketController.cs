@@ -5,6 +5,9 @@ public class RacketController : MonoBehaviour
     float input;
     public float movementSpeed = 5f;
 
+    public float minScale = 0.25f;
+    public float maxScale = 4.0f;
+
     public string axisName;
     public bool aiControlled;
     public Transform aiMovementTarget; // default = null
@@ -70,7 +73,11 @@ public class RacketController : MonoBehaviour
     {
         Vector3 newScale = transform.localScale;
 
-        newScale.x *= scaleFactor;
+        //newScale.x *= scaleFactor;
+        //if (newScale.x < minScale) { newScale.x = minScale; }
+        //else if (newScale.x > maxScale) { newScale.x = maxScale; }
+
+        newScale.x = Mathf.Clamp(newScale.x * scaleFactor, minScale, maxScale);
 
         transform.localScale = newScale;
     }
