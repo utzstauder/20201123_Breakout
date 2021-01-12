@@ -8,51 +8,19 @@ public class RacketController : MonoBehaviour
     public float minScale = 0.25f;
     public float maxScale = 4.0f;
 
-    public string axisName;
-    public bool aiControlled;
-    public Transform aiMovementTarget; // default = null
-
     private Rigidbody2D rigidbody2D; // default = null
+
+    private IInput inputComponent;
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        inputComponent = GetComponent<IInput>();
     }
 
     void Update()
     {
-        if (aiControlled)
-        {
-            if (aiMovementTarget != null)
-            {
-                if (aiMovementTarget.position.x < transform.position.x)
-                {
-                    // move right
-                    input = 1f;
-                } else
-                {
-                    // move left
-                    input = -1f;
-                }
-            } else
-            {
-                //GameObject targetObject = GameObject.Find("Ball");
-
-                BallController ball = GameObject.FindObjectOfType<BallController>();
-
-                if (ball != null)
-                {
-                    aiMovementTarget = ball.transform;
-                } else
-                {
-                    Debug.LogError("AiMovementTarget has not been assigned!");
-                }
-            }
-
-        } else
-        {
-            input = Input.GetAxisRaw(axisName);
-        }
+        input = inputComponent.GetInput();
     }
 
     private void FixedUpdate()

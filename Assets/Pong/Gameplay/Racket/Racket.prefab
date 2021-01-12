@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7937126326985681151}
   - component: {fileID: 7937126326985681150}
   - component: {fileID: 524749969032741572}
+  - component: {fileID: 352507619393170277}
   m_Layer: 8
   m_Name: Racket
   m_TagString: Player
@@ -187,9 +188,6 @@ MonoBehaviour:
   movementSpeed: 10
   minScale: 0.25
   maxScale: 4
-  axisName: Horizontal
-  aiControlled: 0
-  aiMovementTarget: {fileID: 0}
 --- !u!50 &524749969032741572
 Rigidbody2D:
   serializedVersion: 4
@@ -211,3 +209,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 6
+--- !u!114 &352507619393170277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937126326985681149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d869007a2282c41924b4b501bd3ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
